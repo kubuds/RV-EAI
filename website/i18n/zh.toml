@@ -1,0 +1,166 @@
+# 中文界面文案
+[skipToContent]
+other = "跳到正文"
+[brandSub]
+other = "具身智能开放方案"
+[navOverview]
+other = "总览"
+[navArchitecture]
+other = "架构"
+[navEcosystem]
+other = "生态与路线图"
+[navJoin]
+other = "加入我们"
+[navLicensing]
+other = "来源与许可"
+[themeToggle]
+other = "切换明暗配色"
+[langSwitch]
+other = "切换语言"
+[menuToggle]
+other = "菜单"
+
+[heroEyebrow]
+other = "开放 · 可替换 · 已跑通"
+[heroTitleA]
+other = "基于 RISC-V 的"
+[heroTitleAccent]
+other = "具身智能开放解决方案"
+[heroTagline]
+other = "从关节电机到本地大脑，每一层都能换、都能接、都有人已经跑通。我们发布的是接口、清单与参考实现，不是一台封闭的整机。"
+[heroSub]
+other = "openKylin 社区联合 Milk-V、超睿科技、上海 OpenLoong、进迭时空、苦芽科技共同发布。"
+[chipISA]
+other = "一套 ISA 贯穿三层"
+[chipOS]
+other = "五个发行版 + RT-Thread"
+[chipPlugs]
+other = "五个可插拔点"
+[chipTeams]
+other = "六家单位联合发布"
+[ctaArchitecture]
+other = "查看三层架构"
+[ctaJoin]
+other = "加入共建"
+
+[kickerLayers]
+other = "三层分解"
+[layersTitle]
+other = "一台机器人，三层实时性，一套指令集"
+[layersLead]
+other = "本体要求微秒级电流环，小脑要求毫秒级闭环，大脑是十毫秒级的推理。三层都建立在同一套 RISC-V 指令集上，因此换掉任意一层，另外两层不用重写。"
+[robotAlt]
+other = "自绘人形机器人剖面示意：头部为大脑（AI 算力），躯干为小脑（实时控制），四肢关节为本体（电机与连接）"
+[robotCaption]
+other = "示意图由本项目自绘（SVG），不含第三方图片。点击左侧标签可定位到对应层的说明。"
+[zoneBrain]
+other = "大脑 · AI 算力"
+[zoneCerebellum]
+other = "小脑 · 实时控制"
+[zoneBody]
+other = "本体 · 电机与连接"
+[legendHint]
+other = "随页面滚动自动高亮"
+
+[kickerStack]
+other = "软件栈"
+[stackTitle]
+other = "一个 ISA，两个系统域，三条框架路线"
+[stackLead]
+other = "大脑域跑 Linux 发行版，小脑域跑 RT-Thread，两域通过 rpmsg / 共享内存 / 总线协同。框架层三条路线都已跑通，不强制统一。"
+[stackOS]
+other = "操作系统层（大脑域）"
+[stackRTOS]
+other = "RTOS 层（小脑域）"
+[stackFW]
+other = "AI 框架层"
+[stackModel]
+other = "模型层"
+[stackISA]
+other = "指令集底座"
+
+[kickerPlugs]
+other = "可插拔点"
+[plugsTitle]
+other = "五个可插拔点，替换一个其余四个不动"
+[plugsLead]
+other = "这是我们对「开放」的可验证定义：任意一个点换成另一家方案，其余四点不需要改动，也不需要重新适配上层。"
+
+[kickerRelease]
+other = "联合发布"
+[releaseTitle]
+other = "六家单位联合发布，三项承诺"
+[releaseLead]
+other = "发布名称「启元」为工作代号。我们发布的是接口与清单，不是一台定型的整机。"
+
+[kickerJoin]
+other = "加入共建"
+[joinTitle]
+other = "我们在等下一家把方案接进来"
+[joinLead]
+other = "不论你是芯片厂商、本体厂商、集成商、高校还是个人开发者，只要能跑通五个可插拔点中的一个，就可以把结果提交进兼容矩阵。"
+[joinCta]
+other = "看怎么参与"
+
+[footAbout]
+other = "关于"
+[footAboutText]
+other = "RV-EAI 是面向具身智能的 RISC-V 开放解决方案站点，内容基于 2026 乌镇互联网之光发布的架构蓝图整理。"
+[footNav]
+other = "站点导航"
+[footContact]
+other = "联系与社区"
+[footLicense]
+other = "图片来源与许可"
+[footNote]
+other = "站点文字与自绘图表以 Apache-2.0 发布（见仓库 LICENSE）；文中提及的芯片、系统与产品名称归各自所有者所有。数据口径与来源见「来源与许可」页。"
+[planTag]
+other = "规划"
+
+[heroFigureAlt]
+other = "示意图：本体、小脑、大脑三层分别工作在微秒、毫秒、十毫秒尺度，共同建立在一套 RISC-V 指令集上"
+[ladderBodySub]
+other = "关节驱动与传感"
+[ladderBodyVal]
+other = "μs 级电流环"
+[ladderCbSub]
+other = "运动控制与总线通讯"
+[ladderCbVal]
+other = "ms 级控制闭环"
+[ladderBrainSub]
+other = "感知、规划与推理"
+[ladderBrainVal]
+other = "10 ms 级推理"
+[ladderISA]
+other = "RISC-V（RVA23）· RVV · IME · AME · VME"
+
+[archFigureAlt]
+other = "架构总览：三层硬件（大脑 / 小脑 / 本体）与右侧软件层（模型 / 框架 / 操作系统 / RTOS）共同建立在一套 RISC-V 指令集上。图为本项目自绘。"
+[archBrainSub]
+other = "感知 · 理解 · 规划"
+[archCbSub]
+other = "步态 · 平衡 · 毫秒级闭环"
+[archBodySub]
+other = "关节驱动 · FOC 电流环 · 传感接入"
+[archJoint]
+other = "联合发布：六家单位 · 开放接口 + 参考整机 + 兼容矩阵"
+
+[notFoundTitle]
+other = "这一页没有找到"
+[notFoundText]
+other = "链接可能已经变更。你可以回到总览，或者直接去看三层架构。"
+[backHome]
+other = "回到总览"
+
+[archCbChips]
+other = "K3 / SoM260 · 2 实时核 + 3MB TCM"
+[archBodyChips]
+other = "中科本原 · RV-FOC"
+[archISATitle]
+other = "指令集底座 — RISC-V（RVA23）"
+[archFwChips]
+other = "TileLang · 厂商运行时"
+[archRtChips]
+other = "RT-Thread · rpmsg 双域"
+[archJointTeams]
+other = "openKylin · Milk-V · 超睿科技 · 上海 OpenLoong · 进迭时空 · 苦芽科技"

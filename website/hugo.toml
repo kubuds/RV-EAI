@@ -1,0 +1,53 @@
+baseURL = "https://rv-eai.org/"
+title = "RV-EAI"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+timeZone = "Asia/Shanghai"
+summaryLength = 30
+
+# 中文为默认语言，位于站点根目录（必须在任何 [table] 之前声明）
+defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
+
+# 站点根目录在仓库的 website/ 下；构建：hugo --source website
+[params]
+  siteName = "RV-EAI"
+  # 主题默认值：auto | light | dark
+  defaultTheme = "auto"
+  contactEmail = "wuwei@rv2036.org"
+  repoURL = "https://github.com/kubuds/RV-EAI"
+  rv2036 = "https://rv2036.org"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true          # 页面正文里直接写 HTML/SVG 图表
+  [markup.goldmark.parser]
+    attribute = true
+    wrapStandAloneImageWithinParagraph = false
+
+[languages.zh]
+  languageName = "简体中文"
+  languageCode = "zh-CN"
+  contentDir = "content/zh"
+  title = "RV-EAI · 基于 RISC-V 的具身智能开放解决方案"
+  weight = 1
+  [languages.zh.params]
+    description = "RV-EAI 是基于 RISC-V 的具身智能开放解决方案：一套 ISA 贯穿本体、小脑与大脑，五个可插拔点，每一层都有多家可选、都已跑通。"
+
+[languages.en]
+  languageName = "English"
+  languageCode = "en"
+  contentDir = "content/en"
+  title = "RV-EAI · An Open RISC-V Solution for Embodied AI"
+  weight = 2
+  [languages.en.params]
+    description = "RV-EAI is an open RISC-V solution for embodied AI: one ISA across body, cerebellum and brain, five pluggable points, multiple vendors per layer, all demonstrated on real hardware."
+
+[markup.goldmark.extensions]
+  # 站点正文不使用删除线；关闭后中文里的范围符号（如 4~9）不会被误解析成 <del>
+  strikethrough = false
+  definitionList = true
+  linkify = true
+  table = true
+  typographer = false

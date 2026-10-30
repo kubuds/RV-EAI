@@ -1,0 +1,38 @@
+{{ $page := . }}
+{{ $curLang := .Site.Language.Lang }}
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ "" | relLangURL }}">
+      <span class="mark">RV</span>
+      <span>{{ site.Params.siteName }}<small>{{ i18n "brandSub" }}</small></span>
+    </a>
+
+    <button class="icon-btn menu-toggle" id="menuToggle" aria-label="{{ i18n "menuToggle" }}" aria-expanded="false">☰</button>
+
+    <nav class="nav" id="siteNav" aria-label="{{ i18n "navOverview" }}">
+      <a class="nav-link" href="{{ "" | relLangURL }}">{{ i18n "navOverview" }}</a>
+      <a class="nav-link" href="{{ "architecture/" | relLangURL }}">{{ i18n "navArchitecture" }}</a>
+      <a class="nav-link" href="{{ "ecosystem/" | relLangURL }}">{{ i18n "navEcosystem" }}</a>
+      <a class="nav-link" href="{{ "join/" | relLangURL }}">{{ i18n "navJoin" }}</a>
+      <a class="nav-link" href="{{ "licensing/" | relLangURL }}">{{ i18n "navLicensing" }}</a>
+
+      <details class="lang">
+        <summary aria-label="{{ i18n "langSwitch" }}">{{ .Site.Language.LanguageName }} ▾</summary>
+        <div class="lang-menu">
+          {{/* 优先指向当前页面的对应译文，缺译文时回退该语言首页 */}}
+          {{ range .Site.Home.AllTranslations }}
+          {{ $lang := .Language.Lang }}
+          {{ $target := .RelPermalink }}
+          {{ range $page.AllTranslations }}
+            {{ if eq .Language.Lang $lang }}{{ $target = .RelPermalink }}{{ end }}
+          {{ end }}
+          <a class="{{ if eq $curLang $lang }}current{{ end }}"
+             hreflang="{{ .Language.LanguageCode }}" href="{{ $target }}">{{ .Language.LanguageName }}</a>
+          {{ end }}
+        </div>
+      </details>
+
+      <button class="icon-btn" id="themeToggle" aria-label="{{ i18n "themeToggle" }}" title="{{ i18n "themeToggle" }}">◐</button>
+    </nav>
+  </div>
+</header>

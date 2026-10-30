@@ -1,0 +1,90 @@
+{{/* 架构蓝图（自绘 SVG）：三层硬件横带 + 右侧软件层 + RISC-V 底座。
+   文案取自 i18n，芯片型号为专有名词不译。 */}}
+<svg viewBox="0 0 880 480" role="img" aria-label="{{ i18n "archFigureAlt" }}">
+  <style>
+    .ab-band  { fill: var(--surface); stroke: var(--band-line); stroke-width: 1.4; }
+    .ab-title { fill: var(--text); font: 800 13px/1 var(--font-sans); }
+    .ab-sub   { fill: var(--muted); font: 500 10.5px/1 var(--font-sans); }
+    .ab-chip  { fill: var(--text-soft); font: 600 10px/1 var(--font-mono); }
+    .ab-side  { fill: var(--surface); stroke: var(--line-soft); stroke-width: 1.2; }
+    .ab-sidet { fill: var(--text-soft); font: 700 11px/1 var(--font-sans); }
+    .ab-sides { fill: var(--muted); font: 500 9.5px/1 var(--font-sans); }
+    .ab-isa   { fill: #fff; font: 800 13px/1 var(--font-sans); }
+    .ab-isas  { fill: #D6E2FF; font: 500 10.5px/1 var(--font-sans); }
+  </style>
+
+  <!-- ===== 左列：三层硬件 ===== -->
+  <g>
+    <!-- 大脑 -->
+    <rect class="ab-band" x="8" y="8" width="600" height="92" rx="12"/>
+    <rect x="8" y="8" width="6" height="92" rx="3" fill="#2A52BE"/>
+    <text class="ab-title" x="26" y="34">{{ i18n "zoneBrain" }}</text>
+    <text class="ab-sub"   x="26" y="52">{{ i18n "archBrainSub" }}</text>
+    <text class="ab-chip"  x="26" y="76">K3 · 60 TOPS @INT4</text>
+    <text class="ab-chip"  x="196" y="76">AX650N · 10.8 TOPS @INT8</text>
+    <text class="ab-chip"  x="430" y="76">RK1828 · 20 TOPS @INT8</text>
+
+    <!-- 小脑 -->
+    <rect class="ab-band" x="8" y="112" width="600" height="92" rx="12"/>
+    <rect x="8" y="112" width="6" height="92" rx="3" fill="#5B7FE0"/>
+    <text class="ab-title" x="26" y="138">{{ i18n "zoneCerebellum" }}</text>
+    <text class="ab-sub"   x="26" y="156">{{ i18n "archCbSub" }}</text>
+    <text class="ab-chip"  x="26" y="180">{{ i18n "archCbChips" }}</text>
+    <text class="ab-chip"  x="330" y="180">A210 · RV64GCV</text>
+    <text class="ab-chip"  x="490" y="180">UR-DP1000 / Titan</text>
+
+    <!-- 本体 -->
+    <rect class="ab-band" x="8" y="216" width="600" height="92" rx="12"/>
+    <rect x="8" y="216" width="6" height="92" rx="3" fill="#8FB2FF"/>
+    <text class="ab-title" x="26" y="242">{{ i18n "zoneBody" }}</text>
+    <text class="ab-sub"   x="26" y="260">{{ i18n "archBodySub" }}</text>
+    <text class="ab-chip"  x="26" y="284">{{ i18n "archBodyChips" }}</text>
+    <text class="ab-chip"  x="196" y="284">HPM5100 / HPM6E8Y</text>
+    <text class="ab-chip"  x="386" y="284">GD32V · CH32V · ESP32-C</text>
+
+    <!-- ISA 底座 -->
+    <rect x="8" y="320" width="600" height="56" rx="12" fill="url(#isaBar)"/>
+    <text class="ab-isa"  x="28" y="344">{{ i18n "archISATitle" }}</text>
+    <text class="ab-isas" x="28" y="364">RVV · IME · AME · VME</text>
+  </g>
+  <defs>
+    <linearGradient id="isaBar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#16337F"/><stop offset="1" stop-color="#2A52BE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ===== 右列：软件层 ===== -->
+  <g>
+    <rect class="ab-side" x="624" y="8" width="248" height="92" rx="12"/>
+    <text class="ab-sidet" x="642" y="34">{{ i18n "stackModel" }}</text>
+    <text class="ab-sides" x="642" y="56">VAD / YOLO · SLAM · ASR / TTS</text>
+    <text class="ab-sides" x="642" y="74">Nav2 · Planning · VLA / WAM</text>
+
+    <rect class="ab-side" x="624" y="112" width="248" height="92" rx="12"/>
+    <text class="ab-sidet" x="642" y="138">{{ i18n "stackFW" }}</text>
+    <text class="ab-sides" x="642" y="160">FlagOS · llama.cpp</text>
+    <text class="ab-sides" x="642" y="178">{{ i18n "archFwChips" }}</text>
+
+    <rect class="ab-side" x="624" y="216" width="248" height="92" rx="12"/>
+    <text class="ab-sidet" x="642" y="242">{{ i18n "stackOS" }}</text>
+    <text class="ab-sides" x="642" y="264">openKylin / Debian / Ubuntu</text>
+    <text class="ab-sides" x="642" y="282">Fedora / openEuler</text>
+
+    <rect class="ab-side" x="624" y="320" width="248" height="56" rx="12"/>
+    <text class="ab-sidet" x="642" y="344">{{ i18n "stackRTOS" }}</text>
+    <text class="ab-sides" x="642" y="362">{{ i18n "archRtChips" }}</text>
+  </g>
+
+  <!-- ===== 连接箭头（三层 ⇄ 软件层） ===== -->
+  <g stroke="var(--band-line)" stroke-width="1.6" fill="none" stroke-dasharray="4 5">
+    <path d="M608 54 H624"/>
+    <path d="M608 158 H624"/>
+    <path d="M608 262 H624"/>
+    <path d="M608 348 H624"/>
+  </g>
+
+  <!-- ===== 底部联合发布带 ===== -->
+  <rect x="8" y="404" width="864" height="60" rx="12" fill="var(--band)" stroke="var(--band-line)"/>
+  <text class="ab-title" x="28" y="430">{{ i18n "archJoint" }}</text>
+  <text class="ab-sub"   x="28" y="450">{{ i18n "archJointTeams" }}</text>
+</svg>

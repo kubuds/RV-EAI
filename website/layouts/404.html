@@ -1,0 +1,13 @@
+{{ define "main" }}
+<section class="hero" style="text-align:center">
+  <div class="wrap" style="max-width:44rem">
+    <span class="eyebrow">404</span>
+    <h1>{{ i18n "notFoundTitle" }}</h1>
+    <p class="tagline" style="margin-inline:auto">{{ i18n "notFoundText" }}</p>
+    <div class="cta-row" style="justify-content:center;margin-top:1.4rem">
+      <a class="btn primary" href="{{ "" | relLangURL }}">{{ i18n "backHome" }}</a>
+      <a class="btn ghost" href="{{ "architecture/" | relLangURL }}">{{ i18n "navArchitecture" }}</a>
+    </div>
+  </div>
+</section>
+{{ end }}

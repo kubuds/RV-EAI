@@ -1,0 +1,46 @@
+{{/* 首页装饰图：三层时间尺度 + 一套 ISA 底座（自绘 SVG，无第三方素材） */}}
+<svg class="hero-ladder" viewBox="0 0 420 372" role="img"
+     aria-label="{{ i18n "heroFigureAlt" }}">
+  <style>
+    .hl-barlabel { fill: var(--text-soft); font: 700 12.5px/1 var(--font-sans); }
+    .hl-val { fill: var(--accent); font: 700 12px/1 var(--font-mono); }
+    .hl-sub { fill: var(--muted); font: 500 10.5px/1 var(--font-sans); }
+    .hl-isa { fill: #fff; font: 700 12.5px/1 var(--font-sans); }
+    .hl-tick { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; }
+  </style>
+
+  <rect x="4" y="4" width="412" height="364" rx="18" fill="var(--surface)" stroke="var(--line-soft)"/>
+
+  <!-- 三行：本体 / 小脑 / 大脑 -->
+  <g>
+    <text class="hl-barlabel" x="26" y="52">{{ i18n "zoneBody" }}</text>
+    <text class="hl-sub" x="26" y="70">{{ i18n "ladderBodySub" }}</text>
+    <rect x="26" y="80" width="96" height="20" rx="6" fill="var(--accent-2)" opacity=".55"/>
+    <text class="hl-val" x="132" y="95">{{ i18n "ladderBodyVal" }}</text>
+  </g>
+
+  <g>
+    <text class="hl-barlabel" x="26" y="140">{{ i18n "zoneCerebellum" }}</text>
+    <text class="hl-sub" x="26" y="158">{{ i18n "ladderCbSub" }}</text>
+    <rect x="26" y="168" width="196" height="20" rx="6" fill="var(--accent)" opacity=".7"/>
+    <text class="hl-val" x="232" y="183">{{ i18n "ladderCbVal" }}</text>
+  </g>
+
+  <g>
+    <text class="hl-barlabel" x="26" y="228">{{ i18n "zoneBrain" }}</text>
+    <text class="hl-sub" x="26" y="246">{{ i18n "ladderBrainSub" }}</text>
+    <rect x="26" y="256" width="296" height="20" rx="6" fill="var(--primary)" opacity=".85"/>
+    <text class="hl-val" x="332" y="271">{{ i18n "ladderBrainVal" }}</text>
+  </g>
+
+  <!-- 三行的引线汇入 ISA 底座 -->
+  <line class="hl-tick" x1="26" y1="300" x2="394" y2="300"/>
+  <rect x="26" y="312" width="368" height="40" rx="10" fill="url(#isaGrad)"/>
+  <defs>
+    <linearGradient id="isaGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#16337F"/>
+      <stop offset="1" stop-color="#2A52BE"/>
+    </linearGradient>
+  </defs>
+  <text class="hl-isa" x="42" y="337">{{ i18n "ladderISA" }}</text>
+</svg>

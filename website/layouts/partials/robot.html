@@ -1,0 +1,133 @@
+{{/* 交互式机器人剖面：外壳 + SVG + 图例。
+   页面中只应出现一次（内部使用 id="robot" 供 scripts.html 使用）。 */}}
+<div class="robot-rail">
+  <div class="robot-frame">
+    <div>
+      <svg id="robot" viewBox="0 0 360 560" role="img"
+           aria-label="{{ i18n "robotAlt" }}" data-active="body">
+        <defs>
+          <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="var(--accent-2)" stop-opacity=".22"/>
+            <stop offset="1" stop-color="var(--accent)" stop-opacity=".08"/>
+          </linearGradient>
+          <linearGradient id="brainGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--accent)" stop-opacity=".30"/>
+            <stop offset="1" stop-color="var(--accent-2)" stop-opacity=".10"/>
+          </linearGradient>
+          <linearGradient id="cbGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="var(--ok)" stop-opacity=".26"/>
+            <stop offset="1" stop-color="var(--ok)" stop-opacity=".08"/>
+          </linearGradient>
+        </defs>
+
+        <style>
+          #robot .stroke { fill: none; stroke: var(--text-soft); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+          #robot .plate { fill: var(--surface); stroke: var(--text-soft); stroke-width: 2.2; }
+          #robot .joint { fill: var(--surface); stroke: var(--text-soft); stroke-width: 2.2; }
+          #robot .bus { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 5 4; opacity: .5; transition: opacity .4s ease, stroke-width .4s ease; }
+          #robot .label { fill: var(--text-soft); font: 600 11px/1 var(--font-sans); }
+          #robot .tagbg { fill: var(--surface); stroke: var(--band-line); stroke-width: 1.2; }
+          #robot .ground { stroke: var(--line); stroke-width: 2; stroke-dasharray: 3 5; }
+          #robot [data-zone] .zone-fill { opacity: 0; transition: opacity .4s ease; }
+          #robot [data-zone].lit .zone-fill { opacity: 1; }
+          #robot [data-zone].lit .joint,
+          #robot [data-zone].lit .plate { stroke: var(--accent); }
+          #robot [data-zone].lit .bus { opacity: 1; stroke-width: 2; }
+          #robot [data-zone].lit .label { fill: var(--accent); }
+          @media (prefers-reduced-motion: no-preference) {
+            @keyframes rvpulse { 0%,100% { opacity: .3; r: 11; } 50% { opacity: .9; r: 16; } }
+            #robot [data-zone].lit .pulse { animation: rvpulse 2.4s ease-in-out infinite; }
+          }
+        </style>
+
+        <line class="ground" x1="72" y1="512" x2="288" y2="512"/>
+
+        <!-- ===== 大脑：头部 AI 算力 ===== -->
+        <g data-zone="brain">
+          <rect class="zone-fill" x="132" y="26" width="96" height="96" rx="20" fill="url(#brainGrad)"/>
+          <circle class="pulse" cx="180" cy="18" r="4" fill="var(--accent)" opacity=".4"/>
+          <line class="stroke" x1="180" y1="42" x2="180" y2="24"/>
+          <rect class="plate" x="140" y="42" width="80" height="66" rx="15"/>
+          <rect x="154" y="60" width="52" height="24" rx="9" fill="var(--accent)" opacity=".16"/>
+          <circle cx="166" cy="72" r="4.2" fill="var(--accent)"/>
+          <circle cx="180" cy="72" r="4.2" fill="var(--accent)" opacity=".7"/>
+          <circle cx="194" cy="72" r="4.2" fill="var(--accent)" opacity=".4"/>
+          <line class="stroke" x1="152" y1="96" x2="208" y2="96"/>
+          <rect class="stroke" x="166" y="108" width="28" height="14" rx="5"/>
+        </g>
+
+        <!-- ===== 小脑：躯干实时控制 + 关节总线 ===== -->
+        <g data-zone="cerebellum">
+          <rect class="zone-fill" x="118" y="176" width="124" height="98" rx="18" fill="url(#cbGrad)"/>
+          <path class="bus" d="M180 232 L118 152"/>
+          <path class="bus" d="M180 232 L242 152"/>
+          <path class="bus" d="M180 236 L152 310"/>
+          <path class="bus" d="M180 236 L208 310"/>
+          <rect class="plate" x="150" y="196" width="60" height="52" rx="10"/>
+          <rect x="158" y="205" width="44" height="12" rx="3" fill="var(--accent)" opacity=".18"/>
+          <line class="stroke" x1="158" y1="228" x2="202" y2="228" stroke-width="1.6"/>
+          <line class="stroke" x1="158" y1="236" x2="190" y2="236" stroke-width="1.6"/>
+        </g>
+
+        <!-- ===== 本体：四肢关节与执行器 ===== -->
+        <g data-zone="body">
+          <rect class="zone-fill" x="78" y="120" width="204" height="392" rx="26" fill="url(#bodyGrad)"/>
+          <rect class="plate" x="126" y="120" width="108" height="192" rx="20"/>
+          <line class="stroke" x1="118" y1="150" x2="100" y2="216"/>
+          <line class="stroke" x1="100" y1="216" x2="90" y2="286"/>
+          <circle class="joint" cx="118" cy="150" r="9"/>
+          <circle class="joint" cx="100" cy="216" r="8"/>
+          <circle class="joint" cx="90" cy="286" r="7"/>
+          <line class="stroke" x1="242" y1="150" x2="260" y2="216"/>
+          <line class="stroke" x1="260" y1="216" x2="270" y2="286"/>
+          <circle class="joint" cx="242" cy="150" r="9"/>
+          <circle class="joint" cx="260" cy="216" r="8"/>
+          <circle class="joint" cx="270" cy="286" r="7"/>
+          <circle class="joint" cx="152" cy="312" r="9"/>
+          <circle class="joint" cx="208" cy="312" r="9"/>
+          <line class="stroke" x1="152" y1="321" x2="146" y2="396"/>
+          <line class="stroke" x1="146" y1="396" x2="140" y2="482"/>
+          <circle class="joint" cx="146" cy="396" r="8"/>
+          <circle class="joint" cx="140" cy="482" r="7"/>
+          <line class="stroke" x1="140" y1="482" x2="118" y2="494"/>
+          <line class="stroke" x1="208" y1="321" x2="214" y2="396"/>
+          <line class="stroke" x1="214" y1="396" x2="220" y2="482"/>
+          <circle class="joint" cx="214" cy="396" r="8"/>
+          <circle class="joint" cx="220" cy="482" r="7"/>
+          <line class="stroke" x1="220" y1="482" x2="242" y2="494"/>
+        </g>
+
+        <!-- ===== 三层标注 ===== -->
+        <g>
+          <rect class="tagbg" x="228" y="44" width="122" height="28" rx="8"/>
+          <text class="label" x="238" y="62">{{ i18n "zoneBrain" }}</text>
+          <line class="bus" x1="222" y1="58" x2="228" y2="58" stroke-dasharray="0"/>
+
+          <rect class="tagbg" x="2" y="196" width="98" height="28" rx="8"/>
+          <text class="label" x="11" y="214">{{ i18n "zoneCerebellum" }}</text>
+          <line class="bus" x1="100" y1="210" x2="148" y2="210" stroke-dasharray="0"/>
+
+          <rect class="tagbg" x="228" y="392" width="122" height="28" rx="8"/>
+          <text class="label" x="238" y="410">{{ i18n "zoneBody" }}</text>
+          <line class="bus" x1="222" y1="406" x2="228" y2="406" stroke-dasharray="0"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="robot-legend">
+      <button type="button" data-zone-btn="body" aria-current="true">
+        <span class="dot"></span>
+        <span class="lbl">{{ i18n "zoneBody" }}<small>μs</small></span>
+      </button>
+      <button type="button" data-zone-btn="cerebellum" aria-current="false">
+        <span class="dot"></span>
+        <span class="lbl">{{ i18n "zoneCerebellum" }}<small>ms</small></span>
+      </button>
+      <button type="button" data-zone-btn="brain" aria-current="false">
+        <span class="dot"></span>
+        <span class="lbl">{{ i18n "zoneBrain" }}<small>10 ms</small></span>
+      </button>
+      <p class="robot-caption">{{ i18n "robotCaption" }}</p>
+    </div>
+  </div>
+</div>

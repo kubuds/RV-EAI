@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Params.siteName }}{{ end }}</title>
+  <meta name="description" content="{{ .Description | default site.Params.description }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+
+  {{- $defaultLang := (index site.Languages 0).Lang }}
+  {{- $xdefault := "" }}
+  {{- range .AllTranslations }}
+  {{- if eq .Language.Lang $defaultLang }}{{ $xdefault = .Permalink }}{{ end }}
+  <link rel="alternate" hreflang="{{ .Language.LanguageCode }}" href="{{ .Permalink }}">
+  {{- end }}
+  {{- if not $xdefault }}
+  {{- range .Site.Home.AllTranslations }}{{ if eq .Language.Lang $defaultLang }}{{ $xdefault = .Permalink }}{{ end }}{{ end }}
+  {{- end }}
+  {{- with $xdefault }}
+  <link rel="alternate" hreflang="x-default" href="{{ . }}">
+  {{- end }}
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("rv-eai-theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+</head>
+<body>
+  <a class="skip" href="#main">{{ i18n "skipToContent" }}</a>
+  {{ partial "header.html" . }}
+
+  <main id="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+  {{ partial "scripts.html" . }}
+</body>
+</html>
