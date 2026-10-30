@@ -1,0 +1,166 @@
+# English UI strings
+[skipToContent]
+other = "Skip to content"
+[brandSub]
+other = "Open Embodied AI Stack"
+[navOverview]
+other = "Overview"
+[navArchitecture]
+other = "Architecture"
+[navEcosystem]
+other = "Ecosystem & roadmap"
+[navJoin]
+other = "Join us"
+[navLicensing]
+other = "Sources & licensing"
+[themeToggle]
+other = "Toggle light / dark"
+[langSwitch]
+other = "Switch language"
+[menuToggle]
+other = "Menu"
+
+[heroEyebrow]
+other = "Open · replaceable · demonstrated"
+[heroTitleA]
+other = "An open RISC-V solution for"
+[heroTitleAccent]
+other = "embodied AI"
+[heroTagline]
+other = "From joint motors up to on-board intelligence, every layer can be swapped, every layer can be joined, and every layer has already been demonstrated on real hardware. What we publish is interfaces, inventories and reference implementations — not a closed robot."
+[heroSub]
+other = "Jointly released by the openKylin community, Milk-V, UltraRISC, Shanghai OpenLoong, SpacemiT and Kubuds Technology."
+[chipISA]
+other = "One ISA across three layers"
+[chipOS]
+other = "Five distributions + RT-Thread"
+[chipPlugs]
+other = "Five pluggable points"
+[chipTeams]
+other = "Six organisations"
+[ctaArchitecture]
+other = "See the architecture"
+[ctaJoin]
+other = "Build with us"
+
+[kickerLayers]
+other = "Three layers"
+[layersTitle]
+other = "One robot, three time scales, one instruction set"
+[layersLead]
+other = "The body needs a microsecond current loop, the cerebellum needs a millisecond control loop, the brain works at tens of milliseconds. All three sit on the same RISC-V ISA, so replacing any one layer does not force a rewrite of the other two."
+[robotAlt]
+other = "Self-drawn humanoid cross-section: head is the brain (on-board AI), torso is the cerebellum (real-time control), limb joints are the body (motors and connectivity)"
+[robotCaption]
+other = "Diagram drawn in-house as SVG; no third-party imagery. Use the labels on the left to jump to each layer."
+[zoneBrain]
+other = "Brain · on-board AI"
+[zoneCerebellum]
+other = "Cerebellum · real-time control"
+[zoneBody]
+other = "Body · motors & I/O"
+[legendHint]
+other = "Highlights follow the page"
+
+[kickerStack]
+other = "Software stack"
+[stackTitle]
+other = "One ISA, two system domains, three framework routes"
+[stackLead]
+other = "The brain domain runs a Linux distribution, the cerebellum domain runs RT-Thread, and the two cooperate over rpmsg, shared memory and buses. All three framework routes are already working; none of them is mandatory."
+[stackOS]
+other = "OS layer (brain domain)"
+[stackRTOS]
+other = "RTOS layer (cerebellum domain)"
+[stackFW]
+other = "AI framework layer"
+[stackModel]
+other = "Model layer"
+[stackISA]
+other = "ISA foundation"
+
+[kickerPlugs]
+other = "Pluggable points"
+[plugsTitle]
+other = "Five pluggable points — swap one, the other four stay"
+[plugsLead]
+other = "This is our testable definition of openness: replace any single point with another vendor's solution and the other four need no change, nor does the layer above."
+
+[kickerRelease]
+other = "Joint release"
+[releaseTitle]
+other = "Six organisations, three commitments"
+[releaseLead]
+other = "The release name \"Qiyuan\" is a working codename. What we publish is interfaces and inventories, not a frozen product."
+
+[kickerJoin]
+other = "Join us"
+[joinTitle]
+other = "We are waiting for the next implementation to plug in"
+[joinLead]
+other = "Whether you build silicon, robots, systems integration, teach at a university or hack alone: if you can demonstrate one of the five pluggable points, the result belongs in the compatibility matrix."
+[joinCta]
+other = "How to take part"
+
+[footAbout]
+other = "About"
+[footAboutText]
+other = "RV-EAI documents the open RISC-V solution for embodied AI, based on the architecture blueprint released at the 2026 Wuzhen Internet Light event."
+[footNav]
+other = "Site"
+[footContact]
+other = "Contact & community"
+[footLicense]
+other = "Sources & licensing"
+[footNote]
+other = "Site text and self-drawn diagrams are released under Apache-2.0 (see the repository LICENSE). Chip, operating system and product names belong to their respective owners. Data provenance is documented on the Sources & licensing page."
+[planTag]
+other = "planned"
+
+[heroFigureAlt]
+other = "Diagram: body, cerebellum and brain work at microsecond, millisecond and ten-millisecond scales, all on one RISC-V instruction set"
+[ladderBodySub]
+other = "Joint drives and sensors"
+[ladderBodyVal]
+other = "μs current loop"
+[ladderCbSub]
+other = "Motion control and buses"
+[ladderCbVal]
+other = "ms control loop"
+[ladderBrainSub]
+other = "Perception, planning, inference"
+[ladderBrainVal]
+other = "10 ms inference"
+[ladderISA]
+other = "RISC-V (RVA23) · RVV · IME · AME · VME"
+
+[archFigureAlt]
+other = "Architecture overview: three hardware layers (brain / cerebellum / body) and the software layers on the right (models / frameworks / OS / RTOS), all resting on one RISC-V instruction set. Diagram drawn in-house."
+[archBrainSub]
+other = "Perception · understanding · planning"
+[archCbSub]
+other = "Gait · balance · millisecond loop"
+[archBodySub]
+other = "Joint drives · FOC current loop · sensor I/O"
+[archJoint]
+other = "Joint release: six organisations · open interfaces + reference hardware + compatibility matrix"
+
+[notFoundTitle]
+other = "This page does not exist"
+[notFoundText]
+other = "The link may have moved. Go back to the overview, or jump straight to the architecture."
+[backHome]
+other = "Back to overview"
+
+[archCbChips]
+other = "K3 / SoM260 · 2 RT cores + 3 MB TCM"
+[archBodyChips]
+other = "Zhongke Benyuan · RV-FOC"
+[archISATitle]
+other = "ISA foundation — RISC-V (RVA23)"
+[archFwChips]
+other = "TileLang · vendor runtimes"
+[archRtChips]
+other = "RT-Thread · rpmsg dual domain"
+[archJointTeams]
+other = "openKylin · Milk-V · UltraRISC · Shanghai OpenLoong · SpacemiT · Kubuds"

@@ -1,0 +1,32 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>{{ i18n "footAbout" }}</h4>
+        <p>{{ i18n "footAboutText" }}</p>
+      </div>
+      <div>
+        <h4>{{ i18n "footNav" }}</h4>
+        <div class="footer-links">
+          <a href="{{ "" | relLangURL }}">{{ i18n "navOverview" }}</a>
+          <a href="{{ "architecture/" | relLangURL }}">{{ i18n "navArchitecture" }}</a>
+          <a href="{{ "ecosystem/" | relLangURL }}">{{ i18n "navEcosystem" }}</a>
+          <a href="{{ "join/" | relLangURL }}">{{ i18n "navJoin" }}</a>
+          <a href="{{ "licensing/" | relLangURL }}">{{ i18n "footLicense" }}</a>
+        </div>
+      </div>
+      <div>
+        <h4>{{ i18n "footContact" }}</h4>
+        <div class="footer-links">
+          <a href="{{ site.Params.rv2036 }}">rv2036.org</a>
+          <a href="mailto:{{ site.Params.contactEmail }}">{{ site.Params.contactEmail }}</a>
+          <a href="{{ site.Params.repoURL }}">Git repository</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-note">
+      {{ i18n "footNote" }}
+      <br>© {{ now.Year }} RV-EAI contributors.
+    </div>
+  </div>
+</footer>

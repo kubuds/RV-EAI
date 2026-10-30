@@ -1,0 +1,15 @@
+{{/* 三层叙事容器：左侧 sticky 机器人，右侧三条 layer-step。
+   用法： {{< stage >}} …一连串 <div class="layer-step">…{{< /stage >}} */}}
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">{{ i18n "kickerLayers" }}</div>
+      <h2>{{ i18n "layersTitle" }}</h2>
+      <p>{{ i18n "layersLead" }}</p>
+    </div>
+    <div class="stage">
+      {{ partial "robot.html" . }}
+      <div class="steps">{{ .Inner | .Page.RenderString }}</div>
+    </div>
+  </div>
+</section>

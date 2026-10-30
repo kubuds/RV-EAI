@@ -1,0 +1,75 @@
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* ---- 明暗切换 ---- */
+  var themeBtn = document.getElementById("themeToggle");
+  function paintTheme() {
+    var cur = root.getAttribute("data-theme");
+    if (themeBtn) themeBtn.textContent = cur === "dark" ? "☀" : "☾";
+  }
+  paintTheme();
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("rv-eai-theme", next); } catch (e) {}
+      paintTheme();
+    });
+  }
+
+  /* ---- 移动端菜单 ---- */
+  var menuBtn = document.getElementById("menuToggle");
+  var nav = document.getElementById("siteNav");
+  if (menuBtn && nav) {
+    menuBtn.addEventListener("click", function () {
+      var open = nav.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  }
+
+  /* ---- 机器人三层联动：滚动高亮 + 图例跳转 ---- */
+  var svg = document.getElementById("robot");
+  if (svg) {
+    var LEGEND = [
+      { zone: "body",       anchor: "layer-body" },
+      { zone: "cerebellum", anchor: "layer-cerebellum" },
+      { zone: "brain",      anchor: "layer-brain" }
+    ];
+    var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-zone-btn]"));
+
+    function setActive(zone) {
+      if (!zone) return;
+      svg.setAttribute("data-active", zone);
+      Array.prototype.forEach.call(svg.querySelectorAll("[data-zone]"), function (g) {
+        g.classList.toggle("lit", g.getAttribute("data-zone") === zone);
+      });
+      buttons.forEach(function (b) {
+        b.setAttribute("aria-current", b.getAttribute("data-zone-btn") === zone ? "true" : "false");
+      });
+    }
+
+    var sections = LEGEND.map(function (l) {
+      return document.getElementById(l.anchor);
+    }).filter(Boolean);
+
+    if ("IntersectionObserver" in window && sections.length) {
+      var io = new IntersectionObserver(function (entries) {
+        var visible = entries
+          .filter(function (e) { return e.isIntersecting; })
+          .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
+        if (visible.length) setActive(visible[0].target.getAttribute("data-zone"));
+      }, { rootMargin: "-38% 0px -46% 0px", threshold: [0.05, 0.25, 0.6] });
+      sections.forEach(function (s) { io.observe(s); });
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        setActive(b.getAttribute("data-zone-btn"));
+      });
+    });
+
+    setActive(sections.length ? sections[0].getAttribute("data-zone") : "body");
+  }
+})();
+</script>

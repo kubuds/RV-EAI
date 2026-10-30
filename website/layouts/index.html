@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">{{ i18n "heroEyebrow" }}</span>
+      <h1>{{ i18n "heroTitleA" }}<br><span class="grad">{{ i18n "heroTitleAccent" }}</span></h1>
+      <p class="tagline">{{ i18n "heroTagline" }}</p>
+      <div class="chip-row">
+        <span class="chip">{{ i18n "chipISA" }}</span>
+        <span class="chip">{{ i18n "chipOS" }}</span>
+        <span class="chip">{{ i18n "chipPlugs" }}</span>
+        <span class="chip">{{ i18n "chipTeams" }}</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="{{ "architecture/" | relLangURL }}">{{ i18n "ctaArchitecture" }} →</a>
+        <a class="btn ghost" href="{{ "join/" | relLangURL }}">{{ i18n "ctaJoin" }}</a>
+      </div>
+      <p class="hero-sub" style="margin-top:1.2rem">{{ i18n "heroSub" }}</p>
+    </div>
+    <div class="hero-figure">
+      {{ partial "hero-ladder.html" . }}
+    </div>
+  </div>
+</section>
+
+{{ .Content }}
+{{ end }}
