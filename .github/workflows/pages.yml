@@ -1,11 +1,15 @@
 name: Deploy website
 
+# 触发分支说明：本仓库内部在 GitLab（默认 master），GitHub 镜像 kubuds/RV-EAI 的默认分支
+# 也是 master（main 仅为兼容保留）。两个分支都触发构建，避免「推上去了但没构建」。
 on:
   push:
-    branches: [main]
+    branches: [main, master]
     paths:
       - "website/**"
       - ".github/workflows/pages.yml"
+      - "README.md"
+  # 手动触发：Actions → Deploy website → Run workflow（不受上面 branches/paths 限制）
   workflow_dispatch:
 
 permissions:
