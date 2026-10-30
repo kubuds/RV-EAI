@@ -43,9 +43,13 @@ python3 scripts/check_i18n_links.py website/public       # 语言切换 / hrefla
 
 ## 部署
 
-推送到 `main` 分支后，GitHub Actions（`.github/workflows/pages.yml`）会构建 `website/` 并发布到 GitHub Pages。
-首次启用需要在仓库 Settings → Pages 选择 **GitHub Actions** 作为源，并把自定义域名设为 `rv-eai.org`
-（DNS 侧 `rv-eai.org` 与 `www.rv-eai.org` 指向 `<org>.github.io`）。内部 GitLab 仓库的 `master` 分支保持同步。
+推送到 **`master` 或 `main`** 分支后，GitHub Actions（`.github/workflows/pages.yml`）会构建 `website/` 并发布到 GitHub Pages。
+内部 GitLab 仓库默认分支是 `master`，GitHub 镜像 `kubuds/RV-EAI` 的默认分支也是 `master`，`main` 仅为兼容保留——
+两个分支都会触发构建。也可以在 Actions → **Deploy website** → **Run workflow** 手动触发。
+
+首次启用需要在仓库 Settings → Pages 把 **Source** 设为 **GitHub Actions**（不能选 "Deploy from a branch"），
+自定义域名设为 `rv-eai.org`（DNS 侧 `rv-eai.org` 与 `www.rv-eai.org` 指向 `<org>.github.io`）。
+未配置域名前会先跑在 `https://<org>.github.io/RV-EAI/`，workflow 用 `configure-pages` 输出的 `base_url` 自动适配子路径。
 
 ## 数据口径
 
