@@ -1,7 +1,7 @@
 name: Deploy website
 
-# 触发分支说明：本仓库内部在 GitLab（默认 master），GitHub 镜像 kubuds/RV-EAI 的默认分支
-# 也是 master（main 仅为兼容保留）。两个分支都触发构建，避免「推上去了但没构建」。
+# 触发分支说明：默认分支是 master（main 仅为兼容保留）。两个分支都触发构建，
+# 避免「推上去了但没构建」。
 on:
   push:
     branches: [main, master]
